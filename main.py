@@ -1,11 +1,10 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def index():
-    with open("static/index.html", "r", encoding="utf-8") as f:
-        return f.read()
+    return render_template("index.html")
 
 @app.route("/process", methods=["POST"])
 def process():
